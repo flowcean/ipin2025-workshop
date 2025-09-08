@@ -6,4 +6,10 @@ readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
     "flowcean==0.7.0b1",
+    "matplotlib>=3.10.6",
+]
+
+[dependency-groups]
+dev = [
+    "ipykernel>=6.30.1",
 ]
