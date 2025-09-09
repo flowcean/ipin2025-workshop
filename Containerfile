@@ -1,13 +1,27 @@
 FROM ros:humble
 
+# Install dependencies
 RUN apt-get update && apt-get install -y \
-      python3-pip && \
-    rm -rf /var/lib/apt/lists/*
+      python3-pip \
+      ros-humble-turtlesim \
+      git \
+    && rm -rf /var/lib/apt/lists/*
 
-RUN python3.10 -m pip install torch --no-cache-dir --index-url https://download.pytorch.org/whl/cpu
-RUN python3.10 -m pip install --no-cache-dir flowcean==0.7.0b1
-RUN mkdir -p ~/ros2_ws/src && \
-    cd ~/ros2_ws/src && \
-    git clone https://github.com/flowcean/flowcean-ros.git && \
-    cd ~/ros2_ws && \
-    colcon build --packages-select flowcean_ros
+# Install Python packages
+RUN python3 -m pip install --no-cache-dir \
+      --index-url https://download.pytorch.org/whl/cpu \
+      torch
+
+# Install flowcean
+RUN python3 -m pip install --no-cache-dir \
+      flowcean==0.7.0b1
+
+# Set up ROS2 workspace and clone the desired branch
+WORKDIR /root/ros2_ws/src
+RUN git clone --branch launch --single-branch https://github.com/flowcean/flowcean-ros.git
+
+# Build the workspace
+WORKDIR /root/ros2_ws
+RUN . /opt/ros/humble/setup.sh && colcon build --packages-select flowcean_ros
+
+ENTRYPOINT ["/bin/bash", "-c", ". /root/ros2_ws/install/setup.bash && exec bash"]
