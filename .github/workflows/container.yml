@@ -25,7 +25,7 @@ jobs:
         with:
           username: ${{ env.REGISTRY_USER }}
           password: ${{ env.REGISTRY_PASSWORD }}
-          registry: ${{ env.IMAGE_REGISTRY }}
+          registry: ${{ env.REGISTRY }}
 
       - name: Build Container
         uses: redhat-actions/buildah-build@v2
