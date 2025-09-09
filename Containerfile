@@ -4,7 +4,7 @@ FROM ros:humble
 RUN apt-get update && apt-get install -y \
       python3-pip \
       ros-humble-turtlesim \
-      ros-humble-rviz2 \
+      ros-humble-plotjuggler-ros \
       git \
     && rm -rf /var/lib/apt/lists/*
 
