@@ -1,19 +1,35 @@
 import sys
 import time
+from collections.abc import Iterable
 from pathlib import Path
+from typing_extensions import override
 
 import polars as pl
-from flowcean.core import OfflineEnvironment
+from flowcean.core import OfflineEnvironment, Transform
 from flowcean.core.model import Model
 from matplotlib import pyplot as plt
 
 
-def shift_in_time(df: pl.LazyFrame) -> pl.LazyFrame:
-    return df.with_columns(
-        pl.col("/turtle1/pose/x", "/turtle1/pose/y", "/turtle1/pose/theta")
-        .shift(-1)
-        .name.suffix("_next"),
-    ).filter(pl.col("/turtle1/pose/x_next").is_not_null())
+class ShiftInTime(Transform):
+    """Shift specified features in time by a given number of steps and add a suffix to the new columns."""
+
+    def __init__(self, features: Iterable[str], *, steps: int, suffix: str) -> None:
+        """Initialize the ShiftInTime transform.
+
+        Args:
+            features: List of feature names to be shifted.
+            steps: Number of time steps to shift the features. Positive values shift forward in time.
+            suffix: Suffix to append to the names of the new shifted columns.
+        """
+        self.features = list(features)
+        self.suffix = suffix
+        self.steps = steps
+
+    @override
+    def apply(self, data: pl.LazyFrame) -> pl.LazyFrame:
+        return data.with_columns(
+            pl.col(self.features).shift(-self.steps).name.suffix(self.suffix),
+        ).filter(pl.col(self.features[0] + self.suffix).is_not_null())
 
 
 def plot_predictions_vs_ground_truth(
