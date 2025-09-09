@@ -6,8 +6,8 @@
 
    ```bash
    git clone https://github.com/flowcean/ipin2025-workshop.git
-    cd ipin2025-workshop
-    ```
+   cd ipin2025-workshop
+   ```
 
 2. Create a virtual environment and install the required packages from the pyproject.toml. The easiest way is by using uv. If you know another way, feel free to use it.
 
