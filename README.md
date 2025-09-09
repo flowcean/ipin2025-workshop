@@ -44,13 +44,13 @@
    uv sync
    ```
 
-Now you can start the tutorial in the `workshop_notebook.ipynb`.
+Now you can start the tutorial in the `tasks.ipynb`.
 
 ## Running the Notebook
 
 1. (Optional) If you want to use VS Code, install the Python and Jupyter extensions.
 2. Make sure to select the correct Python interpreter (the one from the virtual environment you just created).
-3. You can check your solutions in the `solution_notebook.ipynb`
+3. You can check your solutions in the `solutions.ipynb`
 
 Now you should have a model that can predict the position of the turtlesim.
 
