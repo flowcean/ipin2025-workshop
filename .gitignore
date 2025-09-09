@@ -2,7 +2,6 @@ log
 .venv
 .vscode
 plots
-solution_notebook.ipynb
 lightning_logs
 __pycache__/
 *.pyc
