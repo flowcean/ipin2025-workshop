@@ -5,7 +5,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ipin2025-workshop-ros
+  IMAGE_NAME: flowcean-turtle
 
 jobs:
   build:
