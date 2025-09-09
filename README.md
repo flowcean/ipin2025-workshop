@@ -9,48 +9,48 @@
    cd ipin2025-workshop
    ```
 
-2. Create a virtual environment and install the required packages from the pyproject.toml. The easiest way is by using uv. If you know another way, feel free to use it.
+2. Create a virtual environment and install the required packages from the `pyproject.toml`. The easiest way is by using uv. If you know another way, feel free to use it.
 
-    <details>
-    <summary>Linux</summary>
+   <details>
+   <summary>Linux</summary>
 
-    ```bash
-    curl -LsSf https://astral.sh/uv/install.sh | sh
-    ```
+   ```bash
+   curl -LsSf https://astral.sh/uv/install.sh | sh
+   ```
 
-    </details>
+   </details>
 
-    <details>
-    <summary>macOS</summary>
+   <details>
+   <summary>macOS</summary>
 
-    ```bash
-    curl -LsSf https://astral.sh/uv/install.sh | sh
-    ```
+   ```bash
+   curl -LsSf https://astral.sh/uv/install.sh | sh
+   ```
 
-    </details>
+   </details>
 
-    <details>
-    <summary>Windows</summary>
+   <details>
+   <summary>Windows</summary>
 
-    ```powershell
-    powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
-    ```
+   ```powershell
+   powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+   ```
 
-    </details>
+   </details>
 
-    Then create the virtual environment and install the dependencies:
+   Then create the virtual environment and install the dependencies:
 
-    ```bash
-    uv sync
-    ```
+   ```bash
+   uv sync
+   ```
 
-Now you can start the tutorial in the workshop_notebook.ipynb
+Now you can start the tutorial in the `workshop_notebook.ipynb`.
 
 ## Running the Notebook
 
-1. (Optional) If you want to use VSCode, install the Python and Jupyter extensions.
+1. (Optional) If you want to use VS Code, install the Python and Jupyter extensions.
 2. Make sure to select the correct Python interpreter (the one from the virtual environment you just created).
-3. You can check your solutions in the solution_notebook.ipynb
+3. You can check your solutions in the `solution_notebook.ipynb`
 
 Now you should have a model that can predict the position of the turtlesim.
 
