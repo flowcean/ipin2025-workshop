@@ -1,13 +1,11 @@
-import sys
-import time
 from collections.abc import Iterable
 from pathlib import Path
-from typing_extensions import override
 
 import polars as pl
 from flowcean.core import OfflineEnvironment, Transform
 from flowcean.core.model import Model
 from matplotlib import pyplot as plt
+from typing_extensions import override
 
 
 class ShiftInTime(Transform):
@@ -100,14 +98,3 @@ def plot_predictions_vs_ground_truth(
                 ),
             )
             plt.close()
-
-
-def surprise() -> None:
-    message = "🎉 Congratulations! You finished the tutorial! 🎉"
-
-    # Print message with typing effect
-    for char in message:
-        sys.stdout.write(char)
-        sys.stdout.flush()
-        time.sleep(0.05)
-    print("\n")

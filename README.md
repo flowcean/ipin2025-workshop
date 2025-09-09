@@ -58,4 +58,18 @@ Now you should have a model that can predict the position of the turtlesim.
 
 We provide a container file for this that includes all dependencies.
 
-TODO: Add instructions for building and running the container.
+To run the container, make sure you have [Docker](https://docs.docker.com/get-docker/) installed and run the following command:
+
+   ```bash
+  docker run -it --rm \           
+  --net=host \
+  -e DISPLAY=$DISPLAY \
+  -e QT_X11_NO_MITSHM=1 \
+  -v /tmp/.X11-unix:/tmp/.X11-unix:ro \
+  --device /dev/dri \
+  ghcr.io/flowcean/ipin2025-workshop/flowcean-turtle:latest \
+  bash -c "source /root/ros2_ws/install/setup.bash && \
+           (ros2 run turtlesim turtlesim_node & \
+            ros2 run turtlesim turtle_teleop_key & \
+            ros2 run plotjuggler plotjuggler)"
+   ```
