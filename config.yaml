@@ -1,9 +1,6 @@
 rosbag:
   training_path: recordings/turtle_training
   evaluation_path: recordings/turtle_evaluation
-  message_paths:
-    - ros_msgs/geometry_msgs/msg/Twist.msg
-    - ros_msgs/turtlesim/msg/Pose.msg
 training:
   tree:
     max_leaf_nodes: 1000

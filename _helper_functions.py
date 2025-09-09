@@ -3,6 +3,7 @@ import time
 from pathlib import Path
 
 import polars as pl
+from flowcean.core import OfflineEnvironment
 from flowcean.core.model import Model
 from matplotlib import pyplot as plt
 
@@ -16,35 +17,36 @@ def shift_in_time(df: pl.LazyFrame) -> pl.LazyFrame:
 
 
 def plot_predictions_vs_ground_truth(
-    samples_eval: pl.DataFrame,
+    environment: OfflineEnvironment,
     models: list[Model],
     input_names: list[str],
     output_names: list[str],
 ) -> None:
+    samples = environment.observe().collect()
     # check if plots directory exists
     Path("plots").mkdir(exist_ok=True)
     for model in models:
         predictions = model.predict(
-            samples_eval.select(input_names).lazy(),
+            samples.select(input_names).lazy(),
         ).collect()
         # create x-y plot
         plt.figure(figsize=(12, 12))
         plt.scatter(
-            samples_eval.select(
+            samples.select(
                 pl.col("/turtle1/pose/x_next"),
             ).to_series(),
-            samples_eval.select(
+            samples.select(
                 pl.col("/turtle1/pose/y_next"),
             ).to_series(),
             label="Ground Truth",
             color="red",
         )
         plt.scatter(
-            model.predict(samples_eval.select(input_names).lazy())
+            model.predict(samples.select(input_names).lazy())
             .collect()
             .select(pl.col("/turtle1/pose/x_next"))
             .to_series(),
-            model.predict(samples_eval.select(input_names).lazy())
+            model.predict(samples.select(input_names).lazy())
             .collect()
             .select(pl.col("/turtle1/pose/y_next"))
             .to_series(),
@@ -61,7 +63,7 @@ def plot_predictions_vs_ground_truth(
         for output_name in output_names:
             plt.figure(figsize=(12, 6))
             plt.plot(
-                samples_eval.select(pl.col(output_name)).to_series(),
+                samples.select(pl.col(output_name)).to_series(),
                 label="Ground Truth",
                 color="blue",
             )

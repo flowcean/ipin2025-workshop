@@ -2,22 +2,21 @@ import logging
 from typing import Any
 
 import polars as pl
-from typing_extensions import override
-
 from flowcean.core import Metric
+from typing_extensions import override
 
 logger = logging.getLogger(__name__)
 
 
 class MeanEuclideanDistance(Metric):
-    def __init__(self, columns: list[str] | None = None) -> None:
+    def __init__(self, features: list[str] | None = None) -> None:
         super().__init__()
-        self.columns = columns
+        self.features = features
         self.multi_output = True
 
     @override
     def _compute(self, true: pl.LazyFrame, predicted: pl.LazyFrame) -> Any:
-        columns = self.columns if self.columns is not None else pl.all()
+        columns = self.features if self.features is not None else pl.all()
 
         true_df = true.select(columns).collect(engine="streaming")
         pred_df = predicted.select(columns).collect(engine="streaming")
