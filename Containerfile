@@ -4,6 +4,7 @@ FROM ros:humble
 RUN apt-get update && apt-get install -y \
       python3-pip \
       ros-humble-turtlesim \
+      ros-humble-rviz2 \
       git \
     && rm -rf /var/lib/apt/lists/*
 
