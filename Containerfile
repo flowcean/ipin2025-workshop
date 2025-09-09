@@ -24,4 +24,5 @@ RUN git clone --branch launch --single-branch https://github.com/flowcean/flowce
 WORKDIR /root/ros2_ws
 RUN . /opt/ros/humble/setup.sh && colcon build --packages-select flowcean_ros
 
-ENTRYPOINT ["/bin/bash", "-c", ". /root/ros2_ws/install/setup.bash && exec bash"]
+SHELL ["/bin/bash", "-c"]
+ENTRYPOINT ["/bin/bash", "-c", "source /root/ros2_ws/install/setup.bash && exec \"$@\"", "--"]
