@@ -56,10 +56,16 @@ Now you should have a model that can predict the position of the turtlesim.
 
 ## Deploying the Model in ROS2
 
-We provide a container file for this that includes all dependencies.
+We provide a container file for this that includes all dependencies. To run the container, make sure you have [Docker](https://docs.docker.com/get-docker/) installed.
+This demonstrator requires opening windows for the Simulation and the plotting tool _plotjuggler_. 
 
-To run the container, make sure you have [Docker](https://docs.docker.com/get-docker/) installed and run the following command:
+Here are some instructions on how to get it to run on different platforms.
 
+   <details>
+   <summary>Linux</summary>
+
+   Just run the following command:
+   
    ```bash
   docker run -it --rm \           
   --net=host \
@@ -71,5 +77,53 @@ To run the container, make sure you have [Docker](https://docs.docker.com/get-do
   bash -c "source /root/ros2_ws/install/setup.bash && \
            (ros2 run turtlesim turtlesim_node & \
             ros2 run turtlesim turtle_teleop_key & \
-            ros2 run plotjuggler plotjuggler)"
+            ros2 run plotjuggler plotjuggler -n)"
    ```
+
+   </details>
+
+   <details>
+   <summary>Windows PowerShell with Docker Desktop</summary>
+
+   
+   On windows you cannot run an X server by default. In other words, Docker containers don’t magically create windows on Windows without one.
+   Below are some steps how you can get it running anyway.
+   
+   ### Step 1: Install and run an X server
+   
+   1. Install [**VcXsrv**](https://sourceforge.net/projects/vcxsrv/) (or [Xming](https://sourceforge.net/projects/xming/)).
+   2. Launch it via **XLaunch**:
+   
+      * Select **“Multiple windows”**
+      * Set **Display number = 0**
+      * Tick **“Disable access control”** (important, otherwise Docker can’t connect)
+      * Finish → leave it running in the background (you should see an icon in the tray).
+   
+
+   
+   ### Step 2: Set the DISPLAY variable in PowerShell
+   
+   In your terminal before running Docker:
+   
+   ```powershell
+   $env:DISPLAY="host.docker.internal:0.0"
+   ```
+   
+
+   
+   ### Step 3: Run your container (no `/tmp/.X11-unix`)
+   
+   ```powershell
+   docker run -it --rm `
+     -e DISPLAY=$env:DISPLAY `
+     -e QT_X11_NO_MITSHM=1 `
+     ghcr.io/flowcean/ipin2025-workshop/flowcean-turtle:latest `
+     bash -c "source /root/ros2_ws/install/setup.bash && \
+             (ros2 run turtlesim turtlesim_node & \
+              ros2 run turtlesim turtle_teleop_key & \
+              ros2 run plotjuggler plotjuggler -n)"
+   ```
+
+
+
+   </details>
