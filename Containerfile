@@ -15,11 +15,11 @@ RUN python3 -m pip install --no-cache-dir \
 
 # Install flowcean
 RUN python3 -m pip install --no-cache-dir \
-      flowcean==0.7.0b1
+      flowcean==0.7.0b2
 
 # Set up ROS2 workspace and clone the desired branch
 WORKDIR /root/ros2_ws/src
-RUN git clone --branch launch --single-branch https://github.com/flowcean/flowcean-ros.git
+RUN git clone --branch main --single-branch https://github.com/flowcean/flowcean-ros.git
 
 # Build the workspace
 WORKDIR /root/ros2_ws
