@@ -1,58 +1,15 @@
-# IPIN 2025 Workshop - Data-driven Indoor Positioning using flowcean
+# IPIN 2025 Workshop - Creating Data-Driven Models for Robot Localization Systems using Flowcean
 
-## Installation Instructions
+This repository contains the material for the workshop "Creating Data-Driven Models for Robot Localization Systems using Flowcean" at the International Conference on Indoor Positioning and Indoor Navigation (IPIN) 2025.
 
-1. Clone this repository
+## Running the Jupyter Notebook on Google Colab
 
-   ```bash
-   git clone https://github.com/flowcean/ipin2025-workshop.git
-   cd ipin2025-workshop
-   ```
+If you want to code along, use the [tasks notebook](https://colab.research.google.com/github/flowcean/ipin2025-workshop/blob/main/tasks.ipynb).
 
-2. Create a virtual environment and install the required packages from the `pyproject.toml`. The easiest way is by using uv. If you know another way, feel free to use it.
-
-   <details>
-   <summary>Linux</summary>
-
-   ```bash
-   curl -LsSf https://astral.sh/uv/install.sh | sh
-   ```
-
-   </details>
-
-   <details>
-   <summary>macOS</summary>
-
-   ```bash
-   curl -LsSf https://astral.sh/uv/install.sh | sh
-   ```
-
-   </details>
-
-   <details>
-   <summary>Windows</summary>
-
-   ```powershell
-   powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
-   ```
-
-   </details>
-
-   Then create the virtual environment and install the dependencies:
-
-   ```bash
-   uv sync
-   ```
-
-Now you can start the tutorial in the `tasks.ipynb`.
-
-## Running the Notebook
-
-1. (Optional) If you want to use VS Code, install the Python and Jupyter extensions.
-2. Make sure to select the correct Python interpreter (the one from the virtual environment you just created).
-3. You can check your solutions in the `solutions.ipynb`
+The [solutions notebook](https://colab.research.google.com/github/flowcean/ipin2025-workshop/blob/main/solutions.ipynb) lets you run the complete solution.
 
 Now you should have a model that can predict the position of the turtlesim.
+If you want to see the model in action, follow the instructions below.
 
 ## Deploying the Model in ROS2
 
@@ -129,3 +86,62 @@ Here are some instructions on how to get it to run on different platforms.
 
 
    </details>
+
+## Running the Notebook Locally
+
+If you want to run the notebook locally, follow these instructions.
+
+### Installation Instructions
+
+1. Clone this repository
+
+   ```bash
+   git clone https://github.com/flowcean/ipin2025-workshop.git
+   cd ipin2025-workshop
+   ```
+
+2. Create a virtual environment and install the required packages from the `pyproject.toml`. The easiest way is by using uv. If you know another way, feel free to use it.
+
+   <details>
+   <summary>Linux</summary>
+
+   ```bash
+   curl -LsSf https://astral.sh/uv/install.sh | sh
+   ```
+
+   </details>
+
+   <details>
+   <summary>macOS</summary>
+
+   ```bash
+   curl -LsSf https://astral.sh/uv/install.sh | sh
+   ```
+
+   </details>
+
+   <details>
+   <summary>Windows</summary>
+
+   ```powershell
+   powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+   ```
+
+   </details>
+
+   Then create the virtual environment and install the dependencies:
+
+   ```bash
+   uv sync
+   ```
+
+Now you can start the tutorial in the `tasks.ipynb`.
+
+### Run the Notebook
+
+1. (Optional) If you want to use VS Code, install the Python and Jupyter extensions.
+2. Make sure to select the correct Python interpreter (the one from the virtual environment you just created).
+3. You can check your solutions in the `solutions.ipynb`
+
+Now you should have a model that can predict the position of the turtlesim.
+
