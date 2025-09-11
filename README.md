@@ -1,6 +1,6 @@
 # IPIN 2025 Workshop - Creating Data-Driven Models for Robot Localization Systems using Flowcean
 
-This repository contains the material for the workshop "Creating Data-Driven Models for Robot Localization Systems using Flowcean" at the International Conference on Indoor Positioning and Indoor Navigation (IPIN) 2025.
+This repository contains the material for the workshop "Creating Data-Driven Models for Robot Localization Systems using [Flowcean](https://github.com/flowcean/flowcean)" at the International Conference on Indoor Positioning and Indoor Navigation (IPIN) 2025.
 
 ## Running the Jupyter Notebook on Google Colab
 
