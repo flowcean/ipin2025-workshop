@@ -79,15 +79,15 @@ Here are some instructions on how to get it to run on different platforms.
             ros2 run turtlesim turtle_teleop_key & \
             ros2 run plotjuggler plotjuggler -n)"
    ```
-
+   Now, you should see the turtlesim window and PlotJuggler open on your Windows desktop.
    </details>
 
    <details>
    <summary>Windows PowerShell with Docker Desktop</summary>
 
    
-   On windows you cannot run an X server by default. In other words, Docker containers don’t magically create windows on Windows without one.
-   Below are some steps how you can get it running anyway.
+   By default, Windows does not provide an X server, which means Docker containers cannot directly display graphical windows.  
+   The following steps show you how to enable GUI applications from Docker on Windows.
    
    ### Step 1: Install and run an X server
    
@@ -103,7 +103,7 @@ Here are some instructions on how to get it to run on different platforms.
    
    ### Step 2: Set the DISPLAY variable in PowerShell
    
-   In your terminal before running Docker:
+   Before running Docker, set the `DISPLAY` environment variable in your PowerShell session:
    
    ```powershell
    $env:DISPLAY="host.docker.internal:0.0"
@@ -111,7 +111,7 @@ Here are some instructions on how to get it to run on different platforms.
    
 
    
-   ### Step 3: Run your container (no `/tmp/.X11-unix`)
+   ### Step 3: Run the container
    
    ```powershell
    docker run -it --rm `
@@ -123,6 +123,8 @@ Here are some instructions on how to get it to run on different platforms.
               ros2 run turtlesim turtle_teleop_key & \
               ros2 run plotjuggler plotjuggler -n)"
    ```
+
+   At this point, you should see the turtlesim window and PlotJuggler open on your Windows desktop.
 
 
 
