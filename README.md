@@ -31,10 +31,11 @@ Here are some instructions on how to get it to run on different platforms.
   -v /tmp/.X11-unix:/tmp/.X11-unix:ro \
   --device /dev/dri \
   ghcr.io/flowcean/ipin2025-workshop/flowcean-turtle:latest \
-  bash -c "source /root/ros2_ws/install/setup.bash && \
-           (ros2 run turtlesim turtlesim_node & \
-            ros2 run turtlesim turtle_teleop_key & \
-            ros2 run plotjuggler plotjuggler -n)"
+     bash -c "source /root/ros2_ws/install/setup.bash && \
+             (ros2 run turtlesim turtlesim_node & \
+              ros2 run turtlesim turtle_teleop_key & \
+              ros2 run plotjuggler plotjuggler -n & \
+              ros2 launch flowcean_ros deploy.launch.py)"
    ```
    Now, you should see the turtlesim window and PlotJuggler open on your Windows desktop.
    </details>
@@ -78,7 +79,8 @@ Here are some instructions on how to get it to run on different platforms.
      bash -c "source /root/ros2_ws/install/setup.bash && \
              (ros2 run turtlesim turtlesim_node & \
               ros2 run turtlesim turtle_teleop_key & \
-              ros2 run plotjuggler plotjuggler -n)"
+              ros2 run plotjuggler plotjuggler -n & \
+              ros2 launch flowcean_ros deploy.launch.py)"
    ```
 
    At this point, you should see the turtlesim window and PlotJuggler open on your Windows desktop.
