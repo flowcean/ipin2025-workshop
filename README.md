@@ -22,7 +22,7 @@ Here are some instructions on how to get it to run on different platforms.
    <summary>Linux</summary>
 
    
-Allow GUI programs running as root on the local machine. This is needed for in order to open the simulation and _plotjuggler_.
+Allow GUI programs running as root on the local machine. This is needed in order to open the simulation and _plotjuggler_.
       
    ```bash
 xhost +local:root  
