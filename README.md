@@ -87,6 +87,9 @@ docker run -it --rm \
    
    ### Step 3: Run the container
    
+   Make sure Docker Desktop is running. 
+   
+   Then you can load the latest docker image and run it with the following command:
    ```powershell
 docker run -it --rm `
   -e DISPLAY=$env:DISPLAY `
